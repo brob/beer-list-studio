@@ -1,3 +1,5 @@
+import { Image } from "sanity"
+
 export const schemaTypes = [
     {
         type: 'document',
@@ -96,5 +98,111 @@ export const schemaTypes = [
 
 
         ]
+    },
+    {
+        name: 'checkin',
+        title: 'Checkins',
+        type: 'document',
+        fields: [
+            {
+                name: 'beer',
+                title: 'Beer',
+                type: 'reference',
+                to: [{ type: 'beer' }]
+            },
+            {
+                name: 'venue',
+                title: 'Venue',
+                type: 'reference',
+                to: [{ type: 'venue' }]
+            },
+            {
+                name: 'date',
+                title: 'Date',
+                type: 'datetime'
+            },
+            { 
+                name: 'untappdLink',
+                title: 'Untappd Url',
+                type: 'url'
+            
+            },
+            { 
+                name: 'locationUrl',
+                title: 'Location Url',
+                type: 'url'
+            
+            }
+            
+        ],
+        preview: {
+            select: {
+              date: 'date',
+              name: 'beer.name' // if the movie has a director, follow the reference and get the name
+            },
+            prepare(selection) {
+              const {date, name} = selection
+              return {
+                title: date,
+                subtitle: `Drank: ${name}`
+              }
+            }
+        }
+    },
+    {
+        name: 'venue',
+        title: 'Venues',
+        type: 'document',
+        fields: [
+            {
+                name: 'address',
+                title: 'Address',
+                type: 'string',
+            },
+            {
+                name: 'name',
+                title: 'Name',
+                type: 'string'
+            },
+            {
+                name: 'slug',
+                title: 'Slug',
+                type: 'string',
+                
+            },
+         
+            {
+                name: 'city',
+                title: 'City',
+                type: 'string',
+            },
+            {
+                name: 'state',
+                title: 'State',
+                type: 'string',
+            },
+            {
+                name: 'logoUrl',
+                title: 'Logo Url',
+                type: 'string'
+            },
+            {
+                name: 'locationUrl',
+                type:'string'
+            }
+        ],
+        preview: {
+            select: {
+              name: 'name',
+              image: 'logoUrl',
+            },
+            prepare({name}) {
+
+                  return {
+                    title: name,
+
+                }
+            }
+        }
     }
 ]
