@@ -132,6 +132,11 @@ export const schemaTypes = [
                 title: 'Location Url',
                 type: 'url'
             
+            },
+            {
+                name: 'processed',
+                title: 'Processed?',
+                type: 'boolean'
             }
             
         ],
