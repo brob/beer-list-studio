@@ -18,6 +18,12 @@ export const schemaTypes = [
                 to: [{ type: 'brewery' }]
             },
             {
+                name: 'checkins',
+                title: 'Checkin',
+                type: 'reference',
+                to: [{ type: 'checkin'}]
+            },
+            {
                 name: 'abv',
                 title: 'ABV',
                 type: 'number'
@@ -57,7 +63,18 @@ export const schemaTypes = [
                 type: 'boolean',
                 title: 'Owned but Not Tasted'
             }
-        ]
+        ],
+        preview: {
+            select: {name: 'name', brewery: 'brewery.name'},
+            prepare(selection) {
+                const {name, brewery} = selection
+                console.log(name)
+                return {
+                  title: `${name}`,
+                  subtitle: `By: ${brewery}`
+                }
+              }
+        }
     },
     {
         // type brewery

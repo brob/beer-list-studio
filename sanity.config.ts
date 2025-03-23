@@ -2,6 +2,14 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import {documentListWidget} from 'sanity-plugin-dashboard-widget-document-list'
+import {
+  dashboardTool,
+  sanityTutorialsWidget,
+  projectUsersWidget,
+  projectInfoWidget,
+} from "@sanity/dashboard";
+import { myWidget } from './widgets/CheckinsToAdd.tsx'
 
 export default defineConfig({
   name: 'default',
@@ -10,7 +18,7 @@ export default defineConfig({
   projectId: '75ecmzpn',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [structureTool(), visionTool(), dashboardTool({widgets:[myWidget()]})],
 
   schema: {
     types: schemaTypes,
