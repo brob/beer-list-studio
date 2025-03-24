@@ -18,12 +18,6 @@ export const schemaTypes = [
                 to: [{ type: 'brewery' }]
             },
             {
-                name: 'checkins',
-                title: 'Checkin',
-                type: 'reference',
-                to: [{ type: 'checkin'}]
-            },
-            {
                 name: 'abv',
                 title: 'ABV',
                 type: 'number'
