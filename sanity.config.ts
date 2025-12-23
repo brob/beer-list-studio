@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import { table } from '@sanity/table'
 import {documentListWidget} from 'sanity-plugin-dashboard-widget-document-list'
 import {
   dashboardTool,
