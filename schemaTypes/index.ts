@@ -220,6 +220,7 @@ export const schemaTypes = [
     type: 'document',
     fields: [
       {name: 'title', type: 'string'},
+      {name: 'description', type: 'text'},
       {
         name: 'slug',
         title: 'Slug',
@@ -236,9 +237,18 @@ export const schemaTypes = [
         type: 'array',
         of: [
           {type: 'block'},
+          {type: 'image'},
           {type: 'object', name: 'report', fields: [{type: 'text', name: 'reportText'}]},
         ],
       },
+      {
+        type: 'image',
+        name: 'heroImage',
+        title: 'Hero Image',
+        options: {
+          hotspot: true
+        }
+      }
     ],
   },
 ]
